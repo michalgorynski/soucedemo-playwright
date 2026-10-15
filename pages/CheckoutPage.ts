@@ -53,6 +53,10 @@ export class CheckoutPage {
   }
 
   // Checkout - Overview (Step 2)
+  getProduct(productName: string) {
+    return this.page.getByTestId('inventory-item').filter({ hasText: productName });
+  }
+
   async finishOrder() {
     await this.finishButton.click();
   }

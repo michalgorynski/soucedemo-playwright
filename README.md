@@ -22,9 +22,10 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/michalgorynski/soucedemo-playwright.git
-cd soucedemo-playwright
-npm ci
+npm install
 ```
+
+The `postinstall` script installs the Chromium browser used by the Playwright configuration. You should not need to install it separately.
 
 ## Running tests
 
@@ -74,13 +75,11 @@ npm run format
 
 ## Test coverage
 
-The suite covers:
+The suite currently covers:
 
-- Login page visibility
 - Successful login with valid credentials
 - Rejection of invalid login credentials
-- Adding and removing products from the cart
-- Adding multiple products and verifying cart contents
+- Adding and removing a product from the cart
 - Completing the checkout flow and verifying the confirmation message
 - Checkout validation when required customer information is missing
 - Verifying item subtotal, tax, and final order total
@@ -107,6 +106,7 @@ soucedemo-playwright/
 ├── playwright.config.ts
 ├── tsconfig.json
 ├── package.json
+├── package-lock.json
 └── README.md
 ```
 
@@ -115,16 +115,16 @@ soucedemo-playwright/
 - **Page Object Model (POM):** page-specific locators and user actions are grouped into page classes.
 - **Reusable component:** the error message locator is encapsulated in `components/ErrorMessage.ts`.
 - **Centralized test data:** credentials, customer information, and product data are stored in `tests/test-data/data.ts`.
-- **Explicit assertions:** test expectations remain in the test files, separate from page interactions.
+- **Explicit assertions:** test expectations remain in test files, separate from page interactions.
 - **Playwright test IDs:** `getByTestId()` uses the application's `data-test` attributes, configured in `playwright.config.ts`.
-- **Order-total verification:** expected subtotal, tax, and total are calculated by a small helper in `utils/pricing.ts`.
+- **Order-total verification:** expected subtotal, tax, and total are calculated by a helper in `utils/pricing.ts`.
 
 ## Notes
 
 - The tests use the public SauceDemo demo application and its standard test account.
-- Test results and HTML reports are generated locally by Playwright and are excluded from version control.
+- Test results and HTML reports are generated locally by Playwright and should not be committed.
 
-## Reports
+## HTML report
 
 After a test run, open the HTML report with:
 

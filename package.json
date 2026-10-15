@@ -1,8 +1,7 @@
 {
   "name": "soucedemo-playwright",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Playwright E2E test framework for SauceDemo using TypeScript",
   "scripts": {
     "test": "playwright test",
     "test:ui": "playwright test --ui",
@@ -14,7 +13,7 @@
     "postinstall": "playwright install chromium"
   },
   "keywords": [],
-  "author": "",
+  "author": "Michał Goryński",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {

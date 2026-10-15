@@ -13,7 +13,7 @@ test('user can complete a purchase', async ({ page }) => {
   const cartPage = new CartPage(page);
   const checkoutPage = new CheckoutPage(page);
 
-  const productName = 'Sauce Labs Backpack';
+  const productName = products.backpack.name;
 
   await loginPage.open();
   await loginPage.login(credentials.standardUser.username, credentials.standardUser.password);
@@ -34,7 +34,7 @@ test('user can complete a purchase', async ({ page }) => {
   );
   await checkoutPage.continueToOverview();
   await expect(page).toHaveURL(checkoutPage.overviewUrl);
-  await expect(page.getByText(productName, { exact: true })).toBeVisible();
+  await expect(checkoutPage.getProduct(productName)).toBeVisible();
   await checkoutPage.finishOrder();
   await expect(page).toHaveURL(checkoutPage.completeUrl);
   await expect(checkoutPage.confirmationMessage).toBeVisible();
