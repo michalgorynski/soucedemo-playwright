@@ -22,6 +22,7 @@ Clone the repository and install dependencies:
 
 ```bash
 git clone https://github.com/michalgorynski/soucedemo-playwright.git
+cd soucedemo-playwright
 npm install
 ```
 

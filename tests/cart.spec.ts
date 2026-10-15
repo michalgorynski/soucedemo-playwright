@@ -14,6 +14,7 @@ test('user can add and remove a product from the cart', async ({ page }) => {
   await loginPage.open();
   await loginPage.login(credentials.standardUser.username, credentials.standardUser.password);
 
+  await expect(page).toHaveURL(productsPage.url);
   await productsPage.addProductToCart(productName);
   await expect(productsPage.shoppingCartBadge).toHaveText('1');
   await productsPage.openCart();

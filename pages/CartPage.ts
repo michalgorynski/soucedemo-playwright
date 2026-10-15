@@ -18,7 +18,7 @@ export class CartPage {
 
   getProduct(productName: string): Locator {
     return this.cartItems.filter({
-      hasText: productName,
+      has: this.page.getByText(productName, { exact: true }),
     });
   }
 

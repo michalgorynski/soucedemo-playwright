@@ -53,12 +53,13 @@ test('checkout requires customer information', async ({ page }) => {
   await loginPage.open();
   await loginPage.login(credentials.standardUser.username, credentials.standardUser.password);
 
+  await expect(page).toHaveURL(productsPage.url);
   await productsPage.addProductToCart(productName);
   await productsPage.openCart();
+
   await cartPage.proceedToCheckout();
 
   await checkoutPage.continueToOverview();
-
   await expect(errorMessage.message).toBeVisible();
   await expect(errorMessage.message).toContainText('First Name is required');
 });
@@ -72,6 +73,7 @@ test('order summary displays correct prices and totals', async ({ page }) => {
   await loginPage.open();
   await loginPage.login(credentials.standardUser.username, credentials.standardUser.password);
 
+  await expect(page).toHaveURL(productsPage.url);
   await productsPage.addProductToCart(products.backpack.name);
   await productsPage.addProductToCart(products.bikeLight.name);
   await productsPage.openCart();

@@ -20,7 +20,7 @@ export class ProductsPage {
 
   private getProduct(productName: string): Locator {
     return this.productItems.filter({
-      hasText: productName,
+      has: this.page.getByText(productName, { exact: true }),
     });
   }
   async addProductToCart(productName: string) {
